@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PizzaBlock = ({ title, price, imageUrl, sizes, types }) => {
+const PizzaBlock = ({ id, title, price, imageUrl, sizes, types }) => {
   const [activeSizes, setActiveSizes] = React.useState(0);
   const [activeTypes, setActiveTypes] = React.useState(0);
 
@@ -14,6 +14,7 @@ const PizzaBlock = ({ title, price, imageUrl, sizes, types }) => {
         <ul>
           {types.map((typeId) => (
             <li
+              key={typeId}
               onClick={() => setActiveTypes(typeId)}
               className={activeTypes === typeId ? 'active' : ''}
             >
@@ -24,6 +25,7 @@ const PizzaBlock = ({ title, price, imageUrl, sizes, types }) => {
         <ul>
           {sizes.map((size, index) => (
             <li
+              key={size}
               onClick={() => setActiveSizes(index)}
               className={activeSizes === index ? 'active' : ''}
             >
