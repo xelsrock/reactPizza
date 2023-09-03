@@ -5,18 +5,20 @@ import { useSelector } from 'react-redux';
 import Search from '../Search/Search';
 import { selectCart } from '../../redux/slices/cartSlice';
 
+import logoSvg from '../../assets/img/pizza-logo.svg';
+
 export const Header = () => {
   const { totalPrice, items } = useSelector(selectCart);
   const location = useLocation();
 
-  const totalCount = items.reduce((acc, item) => acc + item.count, 0);
+  const totalCount = items.reduce((acc: number, item: any) => acc + item.count, 0);
 
   return (
     <div className="header">
       <div className="container">
         <Link to="/">
           <div className="header__logo">
-            <img width="38" src="img/pizza-logo.svg" alt="Pizza logo" />
+            <img width="38" src={logoSvg} alt="Pizza logo" />
             <div>
               <h1>React Pizza</h1>
               <p>самая вкусная пицца во вселенной</p>
