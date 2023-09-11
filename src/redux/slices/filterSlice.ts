@@ -26,7 +26,7 @@ const initialState: FilterSliceState = {
   searchValue: '',
   categoryId: 0,
   currentPage: 1,
-  sort: {
+  sort: { 
     name: 'популярности (возрастание)',
     sortProperty: SortPropertyEnum.RATING_DESC,
   },

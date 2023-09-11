@@ -26,9 +26,9 @@ const Home: React.FC = () => {
   const { categoryId, sort, currentPage, searchValue } = useSelector(selectFilter);
   const { items, status } = useSelector(selectPizzaData);
 
-  const onChangeCategory = (index: number) => {
+  const onChangeCategory = React.useCallback((index: number) => {
     dispatch(setCategoryId(index));
-  };
+  }, []);
 
   const getPizzas = async () => {
     const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
@@ -105,7 +105,7 @@ const Home: React.FC = () => {
     <div className="container">
       <div className="content__top">
         <Categories value={categoryId} onClickCategory={onChangeCategory} />
-        <Sort />
+        <Sort sort={sort}/>
       </div>
       <h2 className="content__title">Все пиццы</h2>
       {status === 'error' ? (

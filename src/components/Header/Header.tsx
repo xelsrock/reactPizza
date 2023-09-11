@@ -7,11 +7,22 @@ import { selectCart } from '../../redux/slices/cartSlice';
 
 import logoSvg from '../../assets/img/pizza-logo.svg';
 
-export const Header = () => {
+export const Header: React.FC = () => {
   const { totalPrice, items } = useSelector(selectCart);
+  const isMounted = React.useRef(false);
+
   const location = useLocation();
 
   const totalCount = items.reduce((acc: number, item: any) => acc + item.count, 0);
+
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const json = JSON.stringify(items);
+      localStorage.setItem('cart', json);
+    }
+
+    isMounted.current = true;
+  }, [items]);
 
   return (
     <div className="header">
@@ -25,7 +36,7 @@ export const Header = () => {
             </div>
           </div>
         </Link>
-        <Search />
+        {location.pathname !== '/cart' && <Search />}
         <div className="header__cart">
           {location.pathname !== '/cart' && (
             <Link to="/cart" className="button button--cart">
