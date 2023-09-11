@@ -29,4 +29,18 @@
       color: #7b7b7b;
     }
   }
+
+  @media (max-width: 1050px) {
+    padding-bottom: 0;
+
+    .container {
+      flex-wrap: wrap;
+    }
+
+    &__logo {
+      h1 {
+        font-size: 22px;
+      }
+    }
+  }
 }

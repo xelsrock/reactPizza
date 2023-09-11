@@ -32,7 +32,7 @@ const FullPizza: React.FC = () => {
     <div className="container">
       {pizza ? (
         <>
-          <img src={pizza.imageUrl} alt="" />
+          <img className='fullpizza' src={pizza.imageUrl} alt="" />
           <h2>{pizza.title}</h2>
           <h4>{pizza.price}</h4>
         </>
