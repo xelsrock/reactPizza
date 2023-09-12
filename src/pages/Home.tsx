@@ -10,12 +10,10 @@ import {
   setCurrentPage,
   setFilters,
 } from '../redux/slices/filterSlice';
+
 import { SearchPizzaParams, fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
-import Categories from '../components/Categories/Categories';
-import Sort, { sortList } from '../components/Sort/Sort';
-import PizzaBlock from '../components/PizzaBlock/PizzaBlock';
-import Sceleton from '../components/PizzaBlock/Skeleton';
-import Pagination from '../components/Pagination/Pagination';
+import { sortList } from '../components/Sort/Sort';
+import { Categories, Sort, PizzaBlock, Skeleton, Pagination } from '../components';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -92,7 +90,7 @@ const Home: React.FC = () => {
     isSearch.current = false;
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
-  const skeleton = [...new Array(6)].map((_, index) => <Sceleton key={index} />);
+  const skeleton = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
   const pizzas = items.map((obj: any) => (
     <PizzaBlock key={obj.id} {...obj} />
   ));
