@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import { RootState } from '../store';
 import { PizzaBlockProps } from '../../components/PizzaBlock/PizzaBlock';
-import { SortType } from './filterSlice';
 
 interface PizzaSliceState {
   items: PizzaBlockProps[];

@@ -13,7 +13,8 @@ export type PizzaBlockProps = {
   imageUrl: string;
   sizes: number[];
   types: number[];
-  rating: number;
+  rating?: number;
+  home: boolean;
 };
 
 const PizzaBlock: React.FC<PizzaBlockProps> = ({
@@ -23,7 +24,7 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
   imageUrl,
   sizes,
   types,
-  rating,
+  home,
 }) => {
   const dispatch = useDispatch();
   const cartCount = useSelector(selectCartById(id));
@@ -47,7 +48,7 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
   };
 
   return (
-    <div className="pizza-block-wrapper">
+    <div className={home ? 'pizza-block-wrapper' : 'full-pizza-block-wrapper'}>
       <div className="pizza-block">
         <Link to={`/pizza/${id}`}>
           <img className="pizza-block__image" src={imageUrl} alt="Pizza" />

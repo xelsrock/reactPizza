@@ -1,15 +1,13 @@
 import axios from 'axios';
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { PizzaBlock } from '../components';
+import { PizzaBlockProps } from '../components/PizzaBlock/PizzaBlock';
 
 const FullPizza: React.FC = () => {
   const { id } = useParams();
-  const [pizza, setPizza] = React.useState<{
-    imageUrl: string;
-    title: string;
-    price: number;
-  }>();
-  
+  const [pizza, setPizza] = React.useState<PizzaBlockProps>();
+
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -29,15 +27,24 @@ const FullPizza: React.FC = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container container-fullPizza">
       {pizza ? (
         <>
-          <img className='fullpizza' src={pizza.imageUrl} alt="" />
+          {/* <img className="fullpizza" src={pizza.imageUrl} alt="" />
           <h2>{pizza.title}</h2>
-          <h4>{pizza.price}</h4>
+          <h4>{pizza.price}</h4> */}
+          <PizzaBlock
+            id={pizza.id}
+            title={pizza.title}
+            price={pizza.price}
+            imageUrl={pizza.imageUrl}
+            sizes={pizza.sizes}
+            types={pizza.types}
+            home={false}
+          />
         </>
       ) : (
-        <p>Загрузка...</p>
+        <h2>Загрузка...</h2>
       )}
     </div>
   );

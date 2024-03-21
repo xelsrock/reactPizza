@@ -91,9 +91,7 @@ const Home: React.FC = () => {
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
   const skeleton = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
-  const pizzas = items.map((obj: any) => (
-    <PizzaBlock key={obj.id} {...obj} />
-  ));
+  const pizzas = items.map((obj: any) => <PizzaBlock key={obj.id} {...obj} />);
 
   const onChangePage = (page: number) => {
     dispatch(setCurrentPage(page));
@@ -103,7 +101,7 @@ const Home: React.FC = () => {
     <div className="container">
       <div className="content__top">
         <Categories value={categoryId} onClickCategory={onChangeCategory} />
-        <Sort sort={sort}/>
+        <Sort sort={sort} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       {status === 'error' ? (
